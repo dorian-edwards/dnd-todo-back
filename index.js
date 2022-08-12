@@ -104,7 +104,10 @@ app.put('/api/tasks/:id', async (req, res) => {
 app.delete('/api/tasks/:id', async (req, res) => {
   try {
     const data = await Task.findByIdAndDelete(req.params.id)
-    res.send('broh')
+    res.json({
+      status: 'success',
+      data,
+    })
   } catch (err) {
     return logError(res, 500, 'Internal server error')
   }
