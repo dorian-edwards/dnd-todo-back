@@ -101,6 +101,20 @@ app.put('/api/tasks/:id', async (req, res) => {
   }
 })
 
+app.delete('/api/tasks/', async (req, res) => {
+  try {
+    const data = await Task.deleteMany({ completed: true })
+    return res.status(201).json({
+      status: 'success',
+      data: {
+        countDeleted: data.deletedCount,
+      },
+    })
+  } catch (err) {
+    return logError(res, 400, err.message)
+  }
+})
+
 app.delete('/api/tasks/:id', async (req, res) => {
   try {
     const data = await Task.findByIdAndDelete(req.params.id)
