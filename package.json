@@ -6,7 +6,8 @@
   "scripts": {
     "start": "nodemon index.js",
     "deploy": "git push heroku main",
-    "deploy:dev": "rm -rf build && cd ../frontend && npm run build && cp -r build ../backend/build"
+    "build:ui": "rm -rf build && cd ../frontend && npm run build && cp -r build ../backend/build",
+    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && npm deploy"
   },
   "author": "dorian edwards",
   "license": "ISC",
