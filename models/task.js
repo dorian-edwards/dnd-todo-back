@@ -1,5 +1,4 @@
 const { Schema, model } = require('mongoose')
-const database = require('../database')
 
 const taskSchema = new Schema({
   content: String,
